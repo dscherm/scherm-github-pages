@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍹 Cocktail Mixologist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍹 Cocktail Mixologist</h1>
+            <p class="tagline">Discover, Create, and Mix Amazing Cocktails</p>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="search">Search Cocktails</button>
+            <button class="tab-btn" data-tab="create">Create Your Own</button>
+        </nav>
+
+        <!-- Search Tab -->
+        <div class="tab-content active" id="search-tab">
+            <div class="search-section">
+                <div class="search-options">
+                    <button class="search-type-btn active" data-type="name">By Name</button>
+                    <button class="search-type-btn" data-type="ingredient">By Ingredient</button>
+                    <button class="search-type-btn" data-type="liquor">By Base Liquor</button>
+                    <button class="search-type-btn" data-type="random">Random</button>
+                </div>
+
+                <div class="search-input-container">
+                    <input type="text" id="search-input" placeholder="Search for a cocktail...">
+                    <button id="search-btn">Search</button>
+                </div>
+
+                <!-- Base Liquor Selection (hidden by default) -->
+                <div id="liquor-selection" class="liquor-grid" style="display: none;">
+                    <button class="liquor-btn" data-liquor="Vodka">🥶 Vodka</button>
+                    <button class="liquor-btn" data-liquor="Rum">🏝️ Rum</button>
+                    <button class="liquor-btn" data-liquor="Gin">🌿 Gin</button>
+                    <button class="liquor-btn" data-liquor="Tequila">🌵 Tequila</button>
+                    <button class="liquor-btn" data-liquor="Whiskey">🥃 Whiskey</button>
+                    <button class="liquor-btn" data-liquor="Bourbon">🌾 Bourbon</button>
+                    <button class="liquor-btn" data-liquor="Scotch">🏴 Scotch</button>
+                    <button class="liquor-btn" data-liquor="Brandy">🍇 Brandy</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section">
+                <!-- Cocktail cards will be inserted here -->
+            </div>
+
+            <!-- Cocktail Detail Modal -->
+            <div id="cocktail-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <div id="cocktail-detail">
+                        <!-- Detailed cocktail info will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredient Detail Modal -->
+            <div id="ingredient-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <div id="ingredient-detail">
+                        <!-- Ingredient info will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Your Own Tab -->
+        <div class="tab-content" id="create-tab">
+            <div class="create-section">
+                <h2>Create Your Own Cocktail</h2>
+                <div class="create-form">
+                    <div class="form-group">
+                        <label for="cocktail-name">Cocktail Name</label>
+                        <input type="text" id="cocktail-name" placeholder="Enter your cocktail name...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cocktail-glass">Glass Type</label>
+                        <select id="cocktail-glass">
+                            <option value="Cocktail glass">Cocktail glass</option>
+                            <option value="Highball glass">Highball glass</option>
+                            <option value="Old-fashioned glass">Old-fashioned glass</option>
+                            <option value="Collins glass">Collins glass</option>
+                            <option value="Margarita glass">Margarita glass</option>
+                            <option value="Hurricane glass">Hurricane glass</option>
+                            <option value="Shot glass">Shot glass</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ingredients</label>
+                        <div id="ingredients-list">
+                            <div class="ingredient-input-row">
+                                <input type="text" placeholder="Ingredient" class="ingredient-name">
+                                <input type="text" placeholder="Measurement" class="ingredient-measure">
+                                <button class="remove-ingredient-btn" style="display: none;">×</button>
+                            </div>
+                        </div>
+                        <button id="add-ingredient-btn">+ Add Ingredient</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cocktail-instructions">Instructions</label>
+                        <textarea id="cocktail-instructions" rows="4" placeholder="Describe how to make your cocktail..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cocktail-image">Image URL (optional)</label>
+                        <input type="text" id="cocktail-image" placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <button id="save-cocktail-btn" class="primary-btn">Save My Cocktail</button>
+                </div>
+
+                <!-- Saved Cocktails -->
+                <div id="saved-cocktails-section">
+                    <h3>Your Saved Cocktails</h3>
+                    <div id="saved-cocktails-grid">
+                        <!-- Saved cocktails will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

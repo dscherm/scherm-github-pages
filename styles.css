@@ -1,0 +1,668 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #FF6B9D;
+    --secondary-color: #C44569;
+    --accent-color: #FFA07A;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-in;
+}
+
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: var(--card-bg);
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Search Section */
+.search-section {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.search-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.search-type-btn {
+    padding: 12px 25px;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.search-type-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+}
+
+.search-type-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.search-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: var(--primary-color);
+}
+
+#search-btn {
+    padding: 15px 40px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#search-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(196, 69, 105, 0.4);
+}
+
+/* Liquor Grid */
+.liquor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.liquor-btn {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.liquor-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Results Section */
+#results-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.cocktail-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: slideIn 0.5s ease-out;
+}
+
+.cocktail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.cocktail-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.cocktail-card-content {
+    padding: 20px;
+}
+
+.cocktail-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.cocktail-card .category {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.cocktail-card .glass-type {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease-in;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 20px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.4s ease-out;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--secondary-color);
+}
+
+.cocktail-detail-header {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.cocktail-detail-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cocktail-detail-header h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 3em;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    margin: 0;
+}
+
+.cocktail-detail-body {
+    padding: 30px;
+}
+
+.cocktail-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.ingredients-section {
+    margin: 30px 0;
+}
+
+.ingredients-section h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.ingredient-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.ingredient-measure {
+    color: #666;
+    font-style: italic;
+}
+
+.instructions-section {
+    margin: 30px 0;
+}
+
+.instructions-section h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.instructions-section p {
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: var(--text-dark);
+}
+
+/* Ingredient Modal */
+.ingredient-detail-content {
+    padding: 30px;
+}
+
+.ingredient-detail-content h2 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.ingredient-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.ingredient-option-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.ingredient-option-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.ingredient-option-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.brands-list, .alternatives-list {
+    display: none;
+}
+
+.brands-list.active, .alternatives-list.active {
+    display: block;
+}
+
+.brand-item, .alternative-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color);
+}
+
+/* Create Section */
+.create-section {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.create-section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.create-form {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.ingredient-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ingredient-input-row input {
+    margin-bottom: 0;
+}
+
+.ingredient-name {
+    flex: 2;
+}
+
+.ingredient-measure {
+    flex: 1;
+}
+
+.remove-ingredient-btn {
+    width: 40px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
+.remove-ingredient-btn:hover {
+    background: #a0344f;
+    transform: scale(1.1);
+}
+
+#add-ingredient-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px dashed var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#add-ingredient-btn:hover {
+    background: rgba(255, 107, 157, 0.1);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+#saved-cocktails-section {
+    margin-top: 40px;
+}
+
+#saved-cocktails-section h3 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+#saved-cocktails-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 1.1em;
+}
+
+/* Loading Spinner */
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: var(--text-light);
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    .search-options {
+        flex-direction: column;
+    }
+
+    .search-input-container {
+        flex-direction: column;
+    }
+
+    .liquor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #results-section {
+        grid-template-columns: 1fr;
+    }
+
+    .cocktail-detail-header h2 {
+        font-size: 2em;
+    }
+
+    .modal-content {
+        margin: 5% auto;
+        max-width: 95%;
+    }
+}
